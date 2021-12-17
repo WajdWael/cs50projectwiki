@@ -1,0 +1,29 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    (404)NotFound..
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <!--== Header / p / emText ==-->
+        <div class="text-center">
+            <h1 style="font-size: 90px;">404</h1>
+            <h2>Opps! page not found</h2>
+            <p class="p-3">
+                Sorry, the page you're looking for doesn't exist. 
+                <em>Try Again!</em>
+            </p>
+        </div>
+
+        <!--== links (homepage/ newform) ==-->
+        <div class="text-center">
+            <!--== Back-To-Home <a> ==-->
+            <a class="border border-primary p-1 rounded-pill" href="{% url 'index' %}">Return Home</a>
+            <!--== Go-To-createEntry <a> ==-->
+            <a class="border border-primary p-1 rounded-pill" href="{% url 'newEntry' %}">Create New One</a>
+        </div>
+    </div>
+
+{% endblock %}

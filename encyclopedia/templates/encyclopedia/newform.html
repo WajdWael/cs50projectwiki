@@ -1,0 +1,41 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {% if title %}
+        Edit Page
+    {% else %}
+        New Entry
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <!-- heading -->
+    <header class="mb-4">
+        {% if title %}
+            <h1>Editing: </h1>
+        {% else %}
+            <h1>Add Your New Entry: </h1>
+        {% endif %}
+    </header>
+
+    <!-- error -->
+    {% if existing %}
+    <div class="form-group">
+        <p class="alert alert-danger">This content already exist in home page, <em>Try again!</em></p>
+    </div> 
+    {% endif %}
+
+    <!-- form -->
+    <form action="{% url 'newEntry' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form }}
+            <input class="btn btn-primary btn-sm mt-3" type="submit" value="Save"/>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

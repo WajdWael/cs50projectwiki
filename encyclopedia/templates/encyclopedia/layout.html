@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="overflow-x: hidden;">
+        <div class="row">
+            <div class="sidebar col-lg-2 col-md-3 p-4">
+                <h2>Wiki</h2>
+                <form action="{% url 'search' %}">
+                    <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+                </form>
+                <div class="n-l">
+                    <a href="{% url 'index' %}">Home</a>
+                </div>
+                <div class="n-l">
+                    <a href="{% url 'newEntry' %}">Create New Page</a>
+                </div>
+                <div  class="n-l">
+                    <a href="{% url 'random' %}">Random Page</a>
+                </div>
+                {% block nav %}
+                {% endblock %}
+            </div>
+            <div class="main col-lg-10 col-md-9">
+                <div class="container">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
